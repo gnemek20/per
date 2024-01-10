@@ -9,7 +9,9 @@
 
 ### 구동 방법
 ```
-npm install을 통해 패키지 설치
-npm run dev를 통해 서버 실행
-localhost로 접속!
+01. npm install을 통해 패키지 설치
+
+02. npm run dev를 통해 서버 실행
+
+03. localhost로 접속!
 ```
