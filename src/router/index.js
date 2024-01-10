@@ -4,6 +4,11 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/',
+    name: 'landing',
+    component: () => import('@/views/Home/Landing.vue')
+  }
 ]
 
 const router = new VueRouter({
