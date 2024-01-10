@@ -1,24 +1,15 @@
 # per
 
-## Project setup
+## 대충 소개글
+
+### 소개
 ```
-npm install
+돈 받고 일하는거라 기쁜 나
 ```
 
-### Compiles and hot-reloads for development
+### 구동 방법
 ```
-npm run serve
+npm install을 통해 패키지 설치
+npm run dev를 통해 서버 실행
+localhost로 접속!
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
