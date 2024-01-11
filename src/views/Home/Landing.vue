@@ -24,38 +24,61 @@
     </div>
     <div class="mainArea">
       <div class="best">
-        <div class="description">
-          <div>
-            <h1>Best Sellers</h1>
-          </div>
-          <div>
-            <h5>당신의 향긋한 일상을</h5>
-            <h5>매 시즌 최고의 향수와 함께 가꾸어나가요.</h5>
-          </div>
-          <div>
-            <button>Shop Best Sellers</button>
-          </div>
-        </div>
-        <div class="sample">
-          <div class="showMore">
-            <div ref="leftArrow" class="leftArrow" @click="clickedLeftArrow">
-              <img src="@/assets/icons/leftArrow.svg" width="20px">
+        <div class="section">
+          <div class="description">
+            <div>
+              <h1>Best Sellers</h1>
             </div>
-            <div ref="rightArrow" class="rightArrow" @click="clickedRightArrow">
-              <img src="@/assets/icons/rightArrow.svg" width="20px">
+            <div>
+              <h5>당신의 향긋한 일상을 함께할</h5>
+              <h5>매 시즌 최고의 향수</h5>
+            </div>
+            <div>
+              <button>Shop Best Sellers</button>
             </div>
           </div>
-          <div class="productList">
-            <div ref="products" class="products">
-              <div class="product" v-for="(product, index) in bestProducts.list" v-bind:key="index">
-                <div class="image">
+          <div class="sample">
+            <div class="showMore">
+              <div ref="leftArrow" class="leftArrow" @click="clickedLeftArrow">
+                <img src="@/assets/icons/leftArrow.svg" width="20px">
+              </div>
+              <div ref="rightArrow" class="rightArrow" @click="clickedRightArrow">
+                <img src="@/assets/icons/rightArrow.svg" width="20px">
+              </div>
+            </div>
+            <div class="productList">
+              <div ref="products" class="products">
+                <div class="product" v-for="(product, index) in bestProducts.list" v-bind:key="index">
+                  <div class="image">
 
-                </div>
-                <div class="inform">
-                  <h5>{{ product.name }}</h5>
-                  <h5>{{ product.price }}</h5>
+                  </div>
+                  <div class="inform">
+                    <h5>{{ product.name }}</h5>
+                    <h5>{{ product.price }}</h5>
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="set">
+        <div class="section">
+          <div class="sample">
+            <div class="image">
+              <img src="@/assets/perfumeSet.jpg">
+            </div>
+          </div>
+          <div class="description">
+            <div>
+              <h1>Set of Perfume</h1>
+            </div>
+            <div>
+              <h5>다채로운 당신을 위한</h5>
+              <h5>단 하나의 선택</h5>
+            </div>
+            <div>
+              <button>Shop Set of Perfume</button>
             </div>
           </div>
         </div>
@@ -183,7 +206,7 @@ export default {
       padding: 10px;
     }
     div:hover {
-      filter: invert(0.5);
+      filter: invert(0.7);
     }
   }
   .title {
@@ -198,7 +221,7 @@ export default {
       padding: 10px;
     }
     div:hover {
-      filter: invert(0.5);
+      filter: invert(0.7);
     }
   }
 }
@@ -220,14 +243,17 @@ export default {
     }
   }
 .mainArea {
-  margin: 0px auto;
-  max-width: 1200px;
   .best {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 500px;
     padding: 50px 60px;
+    .section {
+      margin: 0px auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      height: 600px;
+      gap: 10px;
+    }
     .description {
       display: flex;
       flex-direction: column;
@@ -241,7 +267,7 @@ export default {
         background-color: black;
       }
       button:hover {
-        filter: invert(0.2);
+        filter: invert(0.3);
       }
     }
     .sample {
@@ -273,7 +299,7 @@ export default {
           grid-auto-columns: 200px;
           grid-auto-rows: 350px;
           gap: 15px;
-          transition: 0.3s;
+          transition: 300ms;
           .product {
             grid-row: 1;
             display: flex;
@@ -283,7 +309,7 @@ export default {
             .image {
               display: flex;
               height: 100%;
-              border: 1px solid dimgray;
+              border: 1px solid #f3f1f0;
             }
             .inform {
               display: flex;
@@ -291,6 +317,48 @@ export default {
             }
           }
         }
+      }
+    }
+  }
+  .set {
+    padding: 50px 60px;
+    background-color: #eee9f2;
+    .section {
+      margin: 0px auto;
+      display: flex;
+      align-items: center;
+      max-width: 1200px;
+      height: 600px;
+      gap: 60px;
+    }
+    .sample {
+      width: 700px;
+      height: 100%;
+      .image {
+        display: flex;
+        height: calc(100% - 2px);
+        border: 1px solid #f3f1f0;
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .description {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      button {
+        cursor: pointer;
+        padding: 20px;
+        border: 0px;
+        font-weight: bold;
+        background-color: transparent;
+        border: 1px dashed black;
+      }
+      button:hover {
+        filter: invert(0.8);
       }
     }
   }
