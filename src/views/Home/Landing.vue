@@ -114,6 +114,13 @@
         </div>
       </div>
     </div>
+    <div class="footer">
+      <div class="section">
+        <div class="description">
+          <h5>내가 만드는 중임</h5>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -464,6 +471,16 @@ export default {
         }
       }
     }
+  }
+}
+.footer {
+  padding: 50px 60px;
+  background-color: #faf7ef;
+  .section {
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
   }
 }
 </style>
