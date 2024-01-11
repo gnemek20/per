@@ -18,6 +18,49 @@
     <div class="bannerArea">
       <Banner />
     </div>
+    <div class="siteDescription">
+      <img src="@/assets/aroma.svg" width="30px">
+      <h3>이곳은 정말 개쩌는 향수만을 취급합니다.</h3>
+    </div>
+    <div class="mainArea">
+      <div class="best">
+        <div class="description">
+          <div>
+            <h1>Best Sellers</h1>
+          </div>
+          <div>
+            <h5>당신의 향긋한 일상을</h5>
+            <h5>매 시즌 최고의 향수와 함께 가꾸어나가요.</h5>
+          </div>
+          <div>
+            <button>Shop Best Sellers</button>
+          </div>
+        </div>
+        <div class="sample">
+          <div class="showMore">
+            <div ref="leftArrow" class="leftArrow" @click="clickedLeftArrow">
+              <img src="@/assets/icons/leftArrow.svg" width="20px">
+            </div>
+            <div ref="rightArrow" class="rightArrow" @click="clickedRightArrow">
+              <img src="@/assets/icons/rightArrow.svg" width="20px">
+            </div>
+          </div>
+          <div class="productList">
+            <div ref="products" class="products">
+              <div class="product" v-for="(product, index) in bestProducts.list" v-bind:key="index">
+                <div class="image">
+
+                </div>
+                <div class="inform">
+                  <h5>{{ product.name }}</h5>
+                  <h5>{{ product.price }}</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -48,11 +91,73 @@ export default {
         {
           name: "Steamed"
         }
-      ]
+      ],
+      bestProducts: {
+        showingProductsNum: 3,
+        productWidth: 200,
+        gap: 15,
+        list: [
+          {
+            name: "perfume1",
+            price: 20000,
+            image: ""
+          },
+          {
+            name: "perfume2",
+            price: 10000,
+            image: ""
+          },
+          {
+            name: "perfume3",
+            price: 15000,
+            image: ""
+          },
+          {
+            name: "perfume4",
+            price: 50000,
+            image: ""
+          },
+          {
+            name: "perfume5",
+            price: 8000,
+            image: ""
+          }
+        ]
+      },
     }
   },
   components: {
     Banner
+  },
+  methods: {
+    clickedLeftArrow() {
+      if (this.bestProducts.showingProductsNum === 3) return;
+      const num = --this.bestProducts.showingProductsNum;
+
+      const leftArrowElement = this.$refs["leftArrow"];
+      const rightArrowElement = this.$refs["rightArrow"];
+      const productsElement = this.$refs["products"];
+      const width = this.bestProducts.productWidth + this.bestProducts.gap;
+      const nextPositionX = (num - 3) * width;
+      productsElement.style.transform = `translateX(-${nextPositionX}px)`;
+
+      rightArrowElement.style.filter = "invert(0)";
+      if (num === 3) leftArrowElement.style.filter = "invert(0.9)";
+    },
+    clickedRightArrow() {
+      if (this.bestProducts.showingProductsNum === this.bestProducts.list.length) return;
+      const num = ++this.bestProducts.showingProductsNum;
+
+      const leftArrowElement = this.$refs["leftArrow"];
+      const rightArrowElement = this.$refs["rightArrow"];
+      const productsElement = this.$refs["products"];
+      const width = this.bestProducts.productWidth + this.bestProducts.gap;
+      const nextPositionX = (num - 3) * width;
+      productsElement.style.transform = `translateX(-${nextPositionX}px)`;
+
+      leftArrowElement.style.filter = "invert(0)";
+      if (num === this.bestProducts.list.length) rightArrowElement.style.filter = "invert(0.9)";
+    }
   }
 }
 </script>
@@ -63,19 +168,22 @@ export default {
   position: fixed;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  width: calc(100% - 40px);
-  padding: 10px 20px;
+  width: calc(100% - 100px);
+  padding: 10px 50px;
   background-color: #faf7ef;
   * {
     display: flex;
     align-items: center;
-    gap: 30px;
   }
   .menu {
+    gap: 30px;
     div {
       cursor: pointer;
       display: flex;
       padding: 10px;
+    }
+    div:hover {
+      filter: invert(0.5);
     }
   }
   .title {
@@ -83,16 +191,108 @@ export default {
   }
   .option {
     justify-content: end;
+    gap: 30px;
     div {
       cursor: pointer;
       display: flex;
       padding: 10px;
     }
+    div:hover {
+      filter: invert(0.5);
+    }
   }
 }
 .bannerArea {
   height: calc(100vh - 63px);
-  max-height: 700px;
+  max-height: 800px;
   padding-top: 63px;
+}
+.siteDescription {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+    color: white;
+    background-color: #393d24;
+    gap: 10px;
+    img {
+      filter: invert(1);
+    }
+  }
+.mainArea {
+  margin: 0px auto;
+  max-width: 1200px;
+  .best {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 500px;
+    padding: 50px 60px;
+    .description {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      button {
+        cursor: pointer;
+        padding: 20px;
+        border: 0px;
+        font-weight: bold;
+        color: white;
+        background-color: black;
+      }
+      button:hover {
+        filter: invert(0.2);
+      }
+    }
+    .sample {
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      gap: 20px;
+      .showMore {
+        display: flex;
+        gap: 14px;
+        >* {
+          cursor: pointer;
+          user-select: none;
+          display: flex;
+          padding: 3px;
+        }
+        .leftArrow {
+          filter: invert(0.9);
+        }
+      }
+      .productList {
+        position: relative;
+        overflow: hidden;
+        width: 630px;
+        height: 350px;
+        .products {
+          position: absolute;
+          display: grid;
+          grid-auto-columns: 200px;
+          grid-auto-rows: 350px;
+          gap: 15px;
+          transition: 0.3s;
+          .product {
+            grid-row: 1;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            gap: 5px;
+            .image {
+              display: flex;
+              height: 100%;
+              border: 1px solid dimgray;
+            }
+            .inform {
+              display: flex;
+              flex-direction: column;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>
