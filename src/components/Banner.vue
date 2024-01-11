@@ -22,9 +22,9 @@ export default {
       hide: "hideImage",
       imagesCount: 0,
       images: [
-        require("@/assets/banner1.jpg"),
-        require("@/assets/banner2.jpg"),
-        require("@/assets/banner3.jpg")
+        require("@/assets/banners/banner1.jpg"),
+        require("@/assets/banners/banner2.jpg"),
+        require("@/assets/banners/banner3.jpg")
       ]
     }
   },

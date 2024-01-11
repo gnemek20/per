@@ -19,7 +19,7 @@
       <Banner />
     </div>
     <div class="siteDescription">
-      <img src="@/assets/aroma.svg" width="30px">
+      <img src="@/assets/imageIcons/aroma.svg" width="30px">
       <h3>이곳은 정말 개쩌는 향수만을 취급합니다.</h3>
     </div>
     <div class="mainArea">
@@ -66,7 +66,7 @@
         <div class="section">
           <div class="sample">
             <div class="image">
-              <img src="@/assets/perfumeSet.jpg">
+              <img src="@/assets/images/perfumeSetImage.jpg">
             </div>
           </div>
           <div class="description">
@@ -79,6 +79,36 @@
             </div>
             <div>
               <button>Shop Set of Perfume</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="more">
+        <div class="section">
+          <div class="description">
+            <div>
+              <h1>More</h1>
+            </div>
+            <div>
+              <h5>향수를 즐기는 다양한 방법</h5>
+            </div>
+            <hr>
+          </div>
+          <div class="sample">
+            <div class="categories">
+              <div class="category" v-for="(category, index) in categories" v-bind:key="index">
+                <div class="image">
+                  <img :src="category.image">
+                </div>
+                <div class="inform">
+                  <div>
+                    <img :src="category.icon" width="50px">
+                  </div>
+                  <div>
+                    <h5>{{ category.name }}</h5>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -147,6 +177,23 @@ export default {
           }
         ]
       },
+      categories: [
+        {
+          name: "Shop",
+          image: require("@/assets/images/shopImage.jpg"),
+          icon: require("@/assets/imageIcons/shop.svg")
+        },
+        {
+          name: "Gifts",
+          image: require("@/assets/images/giftImage.jpg"),
+          icon: require("@/assets/imageIcons/gift.svg")
+        },
+        {
+          name: "Date",
+          image: require("@/assets/images/dateImage.jpg"),
+          icon: require("@/assets/imageIcons/date.svg")
+        }
+      ]
     }
   },
   components: {
@@ -251,7 +298,7 @@ export default {
       justify-content: space-between;
       align-items: center;
       max-width: 1200px;
-      height: 600px;
+      height: 500px;
       gap: 10px;
     }
     .description {
@@ -328,7 +375,7 @@ export default {
       display: flex;
       align-items: center;
       max-width: 1200px;
-      height: 600px;
+      height: 700px;
       gap: 60px;
     }
     .sample {
@@ -359,6 +406,62 @@ export default {
       }
       button:hover {
         filter: invert(0.8);
+      }
+    }
+  }
+  .more {
+    padding: 50px 60px;
+    .section {
+      margin: 0px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: 1200px;
+      gap: 30px;
+      .description {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        hr {
+          border: none;
+          border: 1px solid #f5f5f5;
+        }
+      }
+      .sample {
+        display: flex;
+        justify-content: center;
+        .categories {
+          display: grid;
+          grid-template-columns: repeat(3, 300px);
+          grid-auto-rows: 600px;
+          gap: 10px;
+          .category {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            gap: 20px;
+            .image {
+              display: flex;
+              height: 100%;
+              border: 1px solid #f3f1f0;
+              img {
+                width: 100%;
+                object-fit: cover;
+              }
+            }
+            .inform {
+              display: flex;
+              flex-direction: column;
+              gap: 5px;
+              * {
+                display: flex;
+                justify-content: center;
+              }
+            }
+          }
+        }
       }
     }
   }
