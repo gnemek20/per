@@ -16,6 +16,7 @@
       </div>
     </div>
     <div class="bannerArea">
+      <!-- <Banner v-show="(render.scrollY + render.height) >= (0 - render.nodePadding + 63) && render.scrollY < (863 + render.nodePadding)" /> -->
       <Banner />
     </div>
     <div class="siteDescription">
@@ -25,36 +26,39 @@
     <div class="mainArea">
       <div class="best">
         <div class="section">
-          <div class="description">
-            <div>
-              <h1>Best Sellers</h1>
-            </div>
-            <div>
-              <h5>당신의 향긋한 일상을 함께할</h5>
-              <h5>매 시즌 최고의 향수</h5>
-            </div>
-            <div>
-              <button>Shop Best Sellers</button>
-            </div>
-          </div>
-          <div class="sample">
-            <div class="showMore">
-              <div ref="leftArrow" class="leftArrow" @click="clickedLeftArrow">
-                <img src="@/assets/icons/leftArrow.svg" width="20px">
+          <!-- <div v-show="(render.scrollY + render.height) >= (863 + 70 - render.nodePadding + 63) && render.scrollY < (863 + 70 + 600 + render.nodePadding)"> -->
+          <div>
+            <div class="description">
+              <div>
+                <h1>Best Sellers</h1>
               </div>
-              <div ref="rightArrow" class="rightArrow" @click="clickedRightArrow">
-                <img src="@/assets/icons/rightArrow.svg" width="20px">
+              <div>
+                <h5>당신의 향긋한 일상을 함께할</h5>
+                <h5>매 시즌 최고의 향수</h5>
+              </div>
+              <div>
+                <button>Shop Best Sellers</button>
               </div>
             </div>
-            <div class="productList">
-              <div ref="products" class="products">
-                <div class="product" v-for="(product, index) in bestProducts.list" v-bind:key="index">
-                  <div class="image">
+            <div class="sample">
+              <div class="showMore">
+                <div ref="leftArrow" class="leftArrow" @click="clickedLeftArrow">
+                  <img src="@/assets/icons/leftArrow.svg" width="20px">
+                </div>
+                <div ref="rightArrow" class="rightArrow" @click="clickedRightArrow">
+                  <img src="@/assets/icons/rightArrow.svg" width="20px">
+                </div>
+              </div>
+              <div class="productList">
+                <div ref="products" class="products">
+                  <div class="product" v-for="(product, index) in bestProducts.list" v-bind:key="index">
+                    <div class="image">
 
-                  </div>
-                  <div class="inform">
-                    <h5>{{ product.name }}</h5>
-                    <h5>{{ product.price }}</h5>
+                    </div>
+                    <div class="inform">
+                      <h5>{{ product.name }}</h5>
+                      <h5>{{ product.price }}</h5>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -64,52 +68,58 @@
       </div>
       <div class="set">
         <div class="section">
-          <div class="sample">
-            <div class="image">
-              <img src="@/assets/images/perfumeSetImage.jpg">
+          <!-- <div v-show="(render.scrollY + render.height) >= (863 + 70 + 600 - render.nodePadding + 63) && render.scrollY < (863 + 70 + 600 + 800 + render.nodePadding)"> -->
+          <div>
+            <div class="sample">
+              <div class="image">
+                <img src="@/assets/images/perfumeSetImage.jpg">
+              </div>
             </div>
-          </div>
-          <div class="description">
-            <div>
-              <h1>Set of Perfume</h1>
-            </div>
-            <div>
-              <h5>다채로운 당신을 위한</h5>
-              <h5>단 하나의 선택</h5>
-            </div>
-            <div>
-              <button>Shop Set of Perfume</button>
+            <div class="description">
+              <div>
+                <h1>Set of Perfume</h1>
+              </div>
+              <div>
+                <h5>다채로운 당신을 위한</h5>
+                <h5>단 하나의 선택</h5>
+              </div>
+              <div>
+                <button>Shop Set of Perfume</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="more">
         <div class="section">
-          <div class="description">
-            <div>
-              <h1>More</h1>
+          <!-- <div v-show="(render.scrollY + render.height) >= (863 + 70 + 600 + 800 - render.nodePadding + 63)"> -->
+          <div>
+            <div class="description">
+              <div>
+                <h1>More</h1>
+              </div>
+              <div>
+                <h5>향수를 즐기는 다양한 방법</h5>
+              </div>
+              <hr>
             </div>
-            <div>
-              <h5>향수를 즐기는 다양한 방법</h5>
-            </div>
-            <hr>
-          </div>
-          <div class="sample">
-            <div class="categories">
-              <div class="category" v-for="(category, index) in categories" v-bind:key="index">
-                <div class="image">
-                  <img :src="category.image">
-                </div>
-                <div class="inform">
-                  <div>
-                    <img :src="category.icon" width="50px">
+            <div class="sample">
+              <div class="categories">
+                <div class="category" v-for="(category, index) in categories" v-bind:key="index">
+                  <div class="image">
+                    <img :src="category.image">
                   </div>
-                  <div>
-                    <h5>{{ category.name }}</h5>
+                  <div class="inform">
+                    <div>
+                      <img :src="category.icon" width="50px">
+                    </div>
+                    <div>
+                      <h5>{{ category.name }}</h5>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+          </div>
           </div>
         </div>
       </div>
@@ -200,13 +210,34 @@ export default {
           image: require("@/assets/images/dateImage.jpg"),
           icon: require("@/assets/imageIcons/date.svg")
         }
-      ]
+      ],
+      render: {
+        scrollY: 0,
+        height: 0,
+        nodePadding: 400
+      }
     }
   },
   components: {
     Banner
   },
+  // mounted() {
+  //   this.render.height = window.innerHeight;
+  //   this.render.scrollY = window.scrollY;
+  //   window.addEventListener("resize", this.resizing);
+  //   window.addEventListener("scroll", this.scrolling);
+  // },
+  // beforeDestroy() {
+  //   window.removeEventListener("resize", this.resizing);
+  //   window.removeEventListener("scroll", this.scrolling);
+  // },
   methods: {
+    // resizing() {
+    //   this.render.height = window.innerHeight;
+    // },
+    // scrolling() {
+    //   this.render.scrollY = window.scrollY;
+    // },
     clickedLeftArrow() {
       if (this.bestProducts.showingProductsNum === 3) return;
       const num = --this.bestProducts.showingProductsNum;
@@ -240,6 +271,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+img {
+  display: none;
+}
+
 .stickyHeader {
   z-index: 1;
   position: fixed;
@@ -280,8 +315,7 @@ export default {
   }
 }
 .bannerArea {
-  height: calc(100vh - 63px);
-  max-height: 800px;
+  height: 800px;
   padding-top: 63px;
 }
 .siteDescription {
@@ -302,11 +336,16 @@ export default {
     .section {
       margin: 0px auto;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
       max-width: 1200px;
       height: 500px;
-      gap: 10px;
+      >div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 10px;
+      }
     }
     .description {
       display: flex;
@@ -379,11 +418,15 @@ export default {
     background-color: #eee9f2;
     .section {
       margin: 0px auto;
-      display: flex;
-      align-items: center;
       max-width: 1200px;
       height: 700px;
-      gap: 60px;
+      >div {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 60px;
+      }
     }
     .sample {
       width: 700px;
@@ -417,14 +460,19 @@ export default {
     }
   }
   .more {
-    padding: 50px 60px;
+    padding: 50px 0px;
     .section {
       margin: 0px auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
       max-width: 1200px;
-      gap: 30px;
+      height: 752px;
+      >div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        gap: 30px;
+      }
       .description {
         display: flex;
         flex-direction: column;
