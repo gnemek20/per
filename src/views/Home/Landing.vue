@@ -1,20 +1,6 @@
 <template>
   <div>
-    <div class="stickyHeader">
-      <div class="menu">
-        <div v-for="(menu, index) in menuItems" v-bind:key="index">
-          <h5>{{ menu.name }}</h5>
-        </div>
-      </div>
-      <div class="title">
-        <h1>Title</h1>
-      </div>
-      <div class="option">
-        <div v-for="(option, index) in optionItems" v-bind:key="index">
-          <h5>{{ option.name }}</h5>
-        </div>
-      </div>
-    </div>
+    <StickyHeader />
     <div class="bannerArea">
       <!-- <Banner v-show="(render.scrollY + render.height) >= (0 - render.nodePadding + 63) && render.scrollY < (863 + render.nodePadding)" /> -->
       <Banner />
@@ -135,33 +121,12 @@
 </template>
 
 <script>
+import StickyHeader from "@/components/StickyHeader.vue"
 import Banner from "@/components/Banner.vue"
 
 export default {
   data() {
     return {
-      menuItems: [
-        {
-          name: "Shop"
-        },
-        {
-          name: "Our Story"
-        },
-        {
-          name: "Get in Touch"
-        },
-        {
-          name: "Gallery"
-        }
-      ],
-      optionItems: [
-        {
-          name: "Cart"
-        },
-        {
-          name: "Steamed"
-        }
-      ],
       bestProducts: {
         showingProductsNum: 3,
         productWidth: 200,
@@ -219,6 +184,7 @@ export default {
     }
   },
   components: {
+    StickyHeader,
     Banner
   },
   // mounted() {
@@ -271,49 +237,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
-  display: none;
-}
-
-.stickyHeader {
-  z-index: 1;
-  position: fixed;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  width: calc(100% - 100px);
-  padding: 10px 50px;
-  background-color: #faf7ef;
-  * {
-    display: flex;
-    align-items: center;
-  }
-  .menu {
-    gap: 30px;
-    div {
-      cursor: pointer;
-      display: flex;
-      padding: 10px;
-    }
-    div:hover {
-      filter: invert(0.7);
-    }
-  }
-  .title {
-    justify-content: center;
-  }
-  .option {
-    justify-content: end;
-    gap: 30px;
-    div {
-      cursor: pointer;
-      display: flex;
-      padding: 10px;
-    }
-    div:hover {
-      filter: invert(0.7);
-    }
-  }
-}
 .bannerArea {
   height: 800px;
   padding-top: 63px;
